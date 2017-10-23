@@ -5,6 +5,7 @@
 # Copyright:: 2017, Travis N. Thomsen for Linux Academy, All Rights Reserved.
 
 include_recipe 'sshd::default'
+include_recipe 'yum-mysql-community::mysql57'
 
 service 'sshd' do
   action :stop
@@ -61,11 +62,26 @@ if node['platform_family'] == "amazon"
   end
 end
 
-yum_repository 'mysql56-community' do
-  mirrorlist 'https://repo.mysql.com/yum/mysql-5.6-community/el/$releasever/$basearch/'
-  description ''
-  enabled true
-  gpgcheck true
+#yum_repository 'mysql56-community' do
+#  mirrorlist 'https://repo.mysql.com/yum/mysql-5.6-community/el/$releasever/$basearch/'
+#  description ''
+#  enabled true
+#  gpgcheck true
+#end
+# yum_repository 'mysql55-community' do
+#  mirrorlist 'https://repo.mysql.com/yum/mysql-5.5-community/el/$releasever/$basearch/'
+#  description ''
+#  enabled true
+#  gpgcheck true
+#end
+
+mysql_service 'default' do
+  version '5.7'
+  bind_address '0.0.0.0'
+  port '3306'
+  data_dir '/data'
+  initial_root_password 'Ch4ng3me'
+  action [:create, :start]
 end
 
 service 'sshd' do
