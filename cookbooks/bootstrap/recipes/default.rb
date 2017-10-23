@@ -5,7 +5,6 @@
 # Copyright:: 2017, Travis N. Thomsen for Linux Academy, All Rights Reserved.
 
 include_recipe 'sshd::default'
-include_recipe 'mysql::default'
 
 service 'sshd' do
   action :stop
