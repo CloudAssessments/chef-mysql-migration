@@ -61,6 +61,10 @@ if node['platform_family'] == "amazon"
   end
 end
 
+mysqld 'galera' do
+  my_cnf { 'bind-address' => '0.0.0.0' }
+end
+
 mysqld_password 'root' do
   password 'Ch4ng3me'
 end
