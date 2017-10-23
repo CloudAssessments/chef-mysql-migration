@@ -22,4 +22,5 @@ chef_version '>= 12.1' if respond_to?(:chef_version)
 depends 'sshd'
 depends 'cloudcli'
 depends 'mysql', '~> 8.0'
+depends 'yum-mysql-community'
 depends 'compat_resource'
