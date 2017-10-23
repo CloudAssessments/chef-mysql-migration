@@ -61,12 +61,11 @@ if node['platform_family'] == "amazon"
   end
 end
 
-mysqld 'galera' do
-  my_cnf { 'bind-address' => '0.0.0.0' }
-end
-
-mysqld_password 'root' do
-  password 'Ch4ng3me'
+yum_repository 'mysql56-community' do
+  mirrorlist 'https://repo.mysql.com/yum/mysql-5.6-community/el/$releasever/$basearch/'
+  description ''
+  enabled true
+  gpgcheck true
 end
 
 service 'sshd' do

@@ -21,4 +21,4 @@ chef_version '>= 12.1' if respond_to?(:chef_version)
 
 depends 'sshd'
 depends 'cloudcli'
-depends 'mysqld'
+depends 'compat_resource'
