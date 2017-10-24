@@ -5,7 +5,6 @@
 # Copyright:: 2017, Travis N. Thomsen for Linux Academy, All Rights Reserved.
 
 include_recipe 'sshd::default'
-include_recipe 'yum-mysql-community::mysql57'
 
 service 'sshd' do
   action :stop
@@ -60,22 +59,6 @@ if node['platform_family'] == "amazon"
   execute 'add cloud_user to sudoers' do
     command '/bin/echo \'cloud_user  ALL=(ALL)  NOPASSWD: ALL\' >> /etc/sudoers'
   end
-end
-
-#yum_repository 'mysql57-community' do
-#  mirrorlist 'https://repo.mysql.com/yum/mysql-5.7-community/el/7/x86_64/'
-#  description ''
-#  enabled true
-#  gpgcheck true
-#end
-
-mysql_service 'default' do
-  version '5.7'
-  bind_address '0.0.0.0'
-  port '3306'
-  data_dir '/data'
-  initial_root_password 'Ch4ng3me'
-  action [:create, :start]
 end
 
 service 'sshd' do
