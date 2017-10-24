@@ -62,14 +62,8 @@ if node['platform_family'] == "amazon"
   end
 end
 
-#yum_repository 'mysql56-community' do
-#  mirrorlist 'https://repo.mysql.com/yum/mysql-5.6-community/el/$releasever/$basearch/'
-#  description ''
-#  enabled true
-#  gpgcheck true
-#end
-# yum_repository 'mysql55-community' do
-#  mirrorlist 'https://repo.mysql.com/yum/mysql-5.5-community/el/$releasever/$basearch/'
+#yum_repository 'mysql57-community' do
+#  mirrorlist 'https://repo.mysql.com/yum/mysql-5.7-community/el/7/x86_64/'
 #  description ''
 #  enabled true
 #  gpgcheck true
